@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+#mover {
+  width: var(--width);
+  height: var(--height);
+  background: var(--colour);
+  position: absolute;
+  left: var(--left--x);
+  top: var(--top--y);
+}
+
+</style>
+</head>
+<body>
+<div id="mover"></div>
+<center>
+<button onclick="growing()">Click me</button>
+</center>
+
+<script>
+var root = document.getElementById("mover"); 
+root.style.setProperty('--left--x', Math.random() * 600 + "px");
+root.style.setProperty('--top--y', Math.random() * 600 + "px");
+
+root.style.setProperty('--width', 50 + "px");
+root.style.setProperty('--height', 50 + "px");
+
+var myVar;
+
+myVar = setInterval(g, 10);
+
+var x = 50; 
+var y = 50; 
+var base = 0; 
+
+var colours = ["red", "blue", "yellow"];
+root.style.setProperty('--colour', colours[Math.floor(Math.random()*colours.length)]);
+
+
+function g(){
+  if (base <300) {
+      var root = document.getElementById("mover"); 
+      root.style.setProperty('--width', x + "px");
+      root.style.setProperty('--height', y + "px");
+      x = x + 1; 
+      y = y + 1; 
+      base = base + 1;
+      }
+  }
+
+
+function growing(){
+clearInterval(g); 
+var root = document.getElementById("mover");
+root.style.setProperty('--left--x', Math.random() * 600 + "px");
+root.style.setProperty('--top--y', Math.random() * 600 + "px");
+root.style.setProperty('--colour', colours[Math.floor(Math.random()*colours.length)]);
+
+x = 50; 
+y = 50; 
+base = 0; 
+myVar = setTimeout(g, 100);
+
+}
+
+  
+</script>
+
+</body>
+</html>
